@@ -1,0 +1,50 @@
+:root {
+    --color-pink: rgb(7, 0, 104);
+    --color-blue: #073980;
+  }
+  
+  body {
+    background: rgb(182,241,253);
+    background: linear-gradient(90deg, rgba(182,241,253,1) 0%, rgba(255,255,255,1) 52%, rgba(182,241,253,1) 100%);
+    font-family: "Roboto Mono", monospace;
+    
+  }
+  .body:hover{
+    padding: 5px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .Text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  
+  h1 {
+    font-weight: bold;
+    color: var(--color-pink);
+  }
+  
+  p {
+    color: var(--color-blue);
+    line-height: 1.6;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .animated-text__word {
+    opacity: 0;
+    animation: fadeIn 0.1s forwards;
+  }
+  
+  .animated-text__space {
+    width: 5px;
+  }
+  
