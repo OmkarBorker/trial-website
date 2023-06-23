@@ -57,7 +57,6 @@ const looper = new InfiniteLoop({
 let i = 0;
 
 looper.run(async () => {
-  console.log(`running ${i}`);
   i += 1;
 });
 

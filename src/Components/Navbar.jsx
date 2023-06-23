@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
-function Navbar({ isLoggedIn, username }) {
+function Navbar({ isLoggedIn, username, setToken }) {
   const [isShow, setIsShow] = useState(true);
 
   const toggleMenu = () => {
@@ -11,7 +11,15 @@ function Navbar({ isLoggedIn, username }) {
   };
 
   const handleLoginLogout = () => {
-    !isLoggedIn;
+    if (isLoggedIn) {
+      sessionStorage.removeItem('token');
+      localStorage.removeItem('token');
+      setToken(null);
+      window.location.reload();
+      history.go(0)
+    } else {
+      history.pushState("/")
+    }
   };
 
   return (
@@ -41,14 +49,21 @@ function Navbar({ isLoggedIn, username }) {
           <>
             <span style={{ fontSize: "20px", width: "80px" }}>{username}</span>
             <div className="flex justify-center text-center">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white text-lg  py-2 px-2 rounded-full h-12 w-20 border-x">
-              Logout
-            </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white text-lg py-2 px-2 rounded-full h-12 w-20 border-x"
+                onClick={handleLoginLogout}
+                href="/"
+              >
+                Logout
+              </button>
             </div>
           </>
         ) : (
           <>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white text-lg  py-2 px-2 rounded-full h-12 w-20 border-x">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white text-lg py-2 px-2 rounded-full h-12 w-20 border-x"
+              onClick={handleLoginLogout}
+            >
               Login
             </button>
           </>
