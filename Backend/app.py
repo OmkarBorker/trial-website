@@ -8,10 +8,14 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Handle the POST request here
-        # You can access the request data using request.json or request.form
-        # Perform login logic and return the appropriate response
-        return jsonify({'token': 'test123'})
+        username = request.json.get('username')
+        password = request.json.get('password')
+
+        if username == 'Omkar' and password == '123':
+            return jsonify({'token': 'test123','username': username})
+        else:
+            return jsonify({'error': 'Invalid username or password.'}), 401
+
     else:
         # Handle the GET request here
         return jsonify({'message': 'Please use POST method to login.'})

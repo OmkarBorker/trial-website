@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 
-function Navbar({ isLoggedIn, username, setToken }) {
+function Navbar({ isLoggedIn, username, setToken ,setShowLogin}) {
   const [isShow, setIsShow] = useState(true);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsShow(!isShow);
@@ -12,13 +15,15 @@ function Navbar({ isLoggedIn, username, setToken }) {
 
   const handleLoginLogout = () => {
     if (isLoggedIn) {
-      sessionStorage.removeItem('token');
-      localStorage.removeItem('token');
-      setToken(null);
+      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
       window.location.reload();
-      history.go(0)
+      history.go(0);
+      isLoggedIn = false;
+      
     } else {
-      history.pushState("/")
+      navigate("/");
+      setShowLogin(true);
     }
   };
 
@@ -38,10 +43,28 @@ function Navbar({ isLoggedIn, username, setToken }) {
           </a>
         </li>
         <li>
-          <a href="/about">About us</a>
+        <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-150}
+            duration={200}
+            className={styles.link}
+          >
+          About us
+          </Link>
         </li>
         <li>
-          <a href="/contact">Contact</a>
+          <Link
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={550}
+            className={styles.link}
+          >
+            Contact
+          </Link>
         </li>
       </ul>
       <div className={styles.profile}>
