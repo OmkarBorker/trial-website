@@ -59,7 +59,7 @@ function Navbar({ isLoggedIn, username, setToken ,setShowLogin}) {
             to="contact"
             spy={true}
             smooth={true}
-            offset={-70}
+            offset={-10}
             duration={550}
             className={styles.link}
           >

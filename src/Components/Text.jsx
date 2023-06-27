@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Text.css";
 
+
 const AnimatedText = ({ children }) => {
   if (typeof children !== "string")
     throw new Error("children should be a string");
@@ -62,11 +63,23 @@ looper.run(async () => {
 
 export default function Text() {
   return (
-    <div className="Text">
-      <h1 style={{fontSize:"30px"}}>Hello There !!!</h1>
+    <>
+    <div className="Text relative rounded-4 text-center">
+    <p class="hover-underline-animation">
+          Hello Trippers !!!
+        </p>
+      
       <AnimatedText>
       Trippie is a platform which helps you to chalk out a plan to discover the city you have travelled to by building an itinerary specifically designed to suit your interest. We believe that as each person is unique and so are their likings. Building upon that, we design a l ist of activities that you can do, in a time frame of your convenience, and designing a plan where you are picked up from a start location and are dropped off to that location at the end while trying to make sure that you have enjoyed your visit to the maximum.
       </AnimatedText>
     </div>
+    <div className="p-4 my-2 text-center">
+    <p class="hover-underline-animation">
+          How Trippie Works ?
+        </p>
+        <img style={{paddingTop:"10px"}} src="src\assets\Group 6.svg"></img>
+      </div>
+    </>
+ 
   );
 }
